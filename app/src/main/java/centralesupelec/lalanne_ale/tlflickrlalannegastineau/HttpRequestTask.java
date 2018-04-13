@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * Created by lalanne_ale on 27/03/18.
  */
 
-public class HttpRequestTask extends AsyncTask<String, Void, Bitmap> {
+public class HttpRequestTask extends AsyncTask<String, Void, Void> {
 
     ArrayList<MyImage> arrayOfImages = MainActivity.arrayOfImages;
     ImageAdapter adapter = MainActivity.adapter;
@@ -38,7 +38,7 @@ public class HttpRequestTask extends AsyncTask<String, Void, Bitmap> {
     }
 
     @Override
-    protected Bitmap doInBackground(String... params) {
+    protected Void doInBackground(String... params) {
         Log.i("TASK", "tesk started");
 
         URL url;
@@ -63,7 +63,7 @@ public class HttpRequestTask extends AsyncTask<String, Void, Bitmap> {
     }
 
     @Override
-    protected void onPostExecute(Bitmap bitmap) {
+    protected void onPostExecute(Void result) {
         String sep = "\"items\": \\[" + "\n" + "\t   ";
         String sep2 = "\n" + "        \\]";
         String rawJsonText = server_response.split(sep)[1].split(sep2)[0];
